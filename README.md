@@ -1,8 +1,8 @@
-# RuneSuite – RuneScape Private Server Listing Platform
+# RuSuite – RuneScape Private Server Listing Platform
 
 ## Project overview
 
-Build a fully functional web application inspired by the structure and features of **RuneTopic** (https://www.runetopic.com), but **without copying any code, text, images, or branding** from that site.
+Build a fully functional web application inspired by the structure and features of **RuneTopic** (https://www.runetopic.com), but **without copying any logos, or branding** from that site.
 
 The goal is to create a modern RuneScape private server listing and discovery platform with:
 
@@ -14,7 +14,7 @@ The goal is to create a modern RuneScape private server listing and discovery pl
 - Admin panel
 - SEO-friendly public pages
 
-All names, copy, assets, and branding must be **original** and use the project name **RuneSuite** (or another neutral name I choose later), not RuneTopic.
+All names, and branding must be **original** and use the project name **RuSuite**.
 
 ---
 
@@ -245,13 +245,12 @@ Create an admin interface (can be a protected route in the same frontend):
 ## Legal & IP constraints
 
 - Do **not**:
-  - Copy any HTML, CSS, JS, or backend code from RuneTopic
-  - Copy any text, descriptions, or UI wording from RuneTopic
   - Use the RuneTopic name, logo, or branding
 
 - Do:
-  - Use RuneTopic only as **inspiration for features and layout concepts**
-  - Create original copy, design, and branding under the project name **RuneSuite** (or another unique name I choose)
+  - Create original copy, design, and branding under the project name **RuSuite**
+  - Copy any HTML, CSS, JS, or backend code from RuneTopic
+  - Copy any text, descriptions, or UI wording from RuneTopic
 
 ---
 
