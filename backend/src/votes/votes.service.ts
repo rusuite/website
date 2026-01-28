@@ -72,10 +72,12 @@ export class VotesService {
     if (recentVote) {
       const timeSinceVote = Date.now() - recentVote.createdAt.getTime();
       const secondsRemaining = Math.ceil((12 * 60 * 60 * 1000 - timeSinceVote) / 1000);
+      const nextVoteAt = new Date(recentVote.createdAt.getTime() + 12 * 60 * 60 * 1000);
       
       return {
         canVote: false,
         secondsRemaining,
+        nextVoteAt,
       };
     }
 

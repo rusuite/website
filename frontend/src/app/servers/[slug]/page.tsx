@@ -170,7 +170,7 @@ export default function ServerDetailPage() {
         <div className="w-full h-64 md:h-96 overflow-hidden">
           <img
             src={server.bannerImageUrl}
-            alt={server.name}
+            alt={`${server.name} banner`}
             className="w-full h-full object-cover"
           />
         </div>

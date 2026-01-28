@@ -15,7 +15,7 @@ export class CreateServerDto {
   @MinLength(50)
   longDescription: string;
 
-  @IsEnum(['OSRS', 'RS3', 'CUSTOM'])
+  @IsEnum(['OSRS', 'RS3', 'CUSTOM', 'PRE_EOC', 'RSPS'])
   gameType: string;
 
   @IsArray()
@@ -34,7 +34,7 @@ export class CreateServerDto {
   @IsString()
   clientDownloadUrl?: string;
 
-  @IsEnum(['NA', 'EU', 'ASIA', 'OCEANIA', 'SA'])
+  @IsEnum(['NA', 'EU', 'AS', 'OCE', 'SA'])
   region: string;
 
   @IsOptional()
@@ -61,7 +61,7 @@ export class UpdateServerDto {
   longDescription?: string;
 
   @IsOptional()
-  @IsEnum(['OSRS', 'RS3', 'CUSTOM'])
+  @IsEnum(['OSRS', 'RS3', 'CUSTOM', 'PRE_EOC', 'RSPS'])
   gameType?: string;
 
   @IsOptional()
@@ -82,7 +82,7 @@ export class UpdateServerDto {
   clientDownloadUrl?: string;
 
   @IsOptional()
-  @IsEnum(['NA', 'EU', 'ASIA', 'OCEANIA', 'SA'])
+  @IsEnum(['NA', 'EU', 'AS', 'OCE', 'SA'])
   region?: string;
 
   @IsOptional()

@@ -75,8 +75,8 @@ export default function AdminPage() {
       ]);
 
       setAnalytics(analyticsRes.data);
-      setServers(serversRes.data.servers || serversRes.data);
-      setUsers(usersRes.data.users || usersRes.data);
+      setServers(Array.isArray(serversRes.data) ? serversRes.data : serversRes.data.servers);
+      setUsers(Array.isArray(usersRes.data) ? usersRes.data : usersRes.data.users);
     } catch (error) {
       console.error('Error fetching admin data:', error);
     } finally {

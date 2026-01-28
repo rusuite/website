@@ -31,7 +31,7 @@ export class ServersService {
           ...createServerDto,
           slug: newSlug,
           ownerId: userId,
-          status: 'APPROVED', // Auto-approve for now
+          status: 'PENDING',
         },
         include: {
           owner: {
@@ -49,7 +49,7 @@ export class ServersService {
         ...createServerDto,
         slug,
         ownerId: userId,
-        status: 'APPROVED', // Auto-approve for now
+        status: 'PENDING',
       },
       include: {
         owner: {
