@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String    @id @default(uuid())
+  email         String    @unique
+  passwordHash  String    @map("password_hash")
+  role          Role      @default(USER)
+  createdAt     DateTime  @default(now()) @map("created_at")
+  servers       Server[]
+  votes         Vote[]
+  
+  @@map("users")
+}
+
+model Server {
+  id                 String      @id @default(uuid())
+  ownerId            String      @map("owner_id")
+  name               String
+  slug               String      @unique
+  shortDescription   String      @map("short_description")
+  longDescription    String      @map("long_description")
+  gameType           String      @map("game_type")
+  tags               String[]
+  websiteUrl         String?     @map("website_url")
+  discordUrl         String?     @map("discord_url")
+  clientDownloadUrl  String?     @map("client_download_url")
+  region             String
+  bannerImageUrl     String?     @map("banner_image_url")
+  status             ServerStatus @default(PENDING)
+  createdAt          DateTime    @default(now()) @map("created_at")
+  owner              User        @relation(fields: [ownerId], references: [id])
+  votes              Vote[]
+  clickStats         ClickStat[]
+  
+  @@index([slug])
+  @@index([status])
+  @@index([gameType])
+  @@map("servers")
+}
+
+model Vote {
+  id         String   @id @default(uuid())
+  serverId   String   @map("server_id")
+  userId     String?  @map("user_id")
+  ipAddress  String   @map("ip_address")
+  createdAt  DateTime @default(now()) @map("created_at")
+  server     Server   @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  user       User?    @relation(fields: [userId], references: [id])
+  
+  @@index([serverId])
+  @@index([ipAddress])
+  @@index([createdAt])
+  @@map("votes")
+}
+
+model ClickStat {
+  id          String   @id @default(uuid())
+  serverId    String   @map("server_id")
+  type        ClickType
+  count       Int      @default(0)
+  lastUpdated DateTime @default(now()) @map("last_updated")
+  server      Server   @relation(fields: [serverId], references: [id], onDelete: Cascade)
+  
+  @@unique([serverId, type])
+  @@map("click_stats")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ServerStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum ClickType {
+  WEBSITE
+  DISCORD
+  CLIENT
+}
